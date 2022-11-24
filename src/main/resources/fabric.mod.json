@@ -1,0 +1,47 @@
+{
+    "schemaVersion": 1,
+    "id": "applied-equivalence",
+    "version": "${version}",
+    "name": "Applied Equivalence",
+    "description": "Adds equal exchange mechanics to AE2 network",
+    "authors": [
+        "Johnson1893"
+    ],
+    "contact": {
+        "website": "https://github.com/Relvl/applied-equivalence",
+        "repo": "https://github.com/Relvl/applied-equivalence"
+    },
+    "license": "MIT",
+    "icon": "assets/applied-equivalence/icon.png",
+    "environment": "*",
+    "entrypoints": {
+        "main": [
+            {
+                "adapter": "kotlin",
+                "value": "io.github.relvl.appliedequivalence.AppliedEquivalence"
+            }
+        ],
+        "client": [
+            {
+                "adapter": "kotlin",
+                "value": "io.github.relvl.appliedequivalence.client.AppliedEquivalenceClient"
+            }
+        ],
+        "ae2": [
+            {
+                "adapter": "kotlin",
+                "value": "io.github.relvl.appliedequivalence.AppliedEquivalence"
+            }
+        ]
+    },
+    "mixins": [
+        "applied-equivalence.mixins.json"
+    ],
+    "depends": {
+        "fabricloader": ">=0.14.10",
+        "fabric": "*",
+        "minecraft": "1.18.2",
+        "fabric-language-kotlin": "*",
+        "ae2": ">=11.6.2"
+    }
+}

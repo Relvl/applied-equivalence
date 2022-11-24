@@ -1,0 +1,20 @@
+{
+    "multipart": [
+        {
+            "apply": {
+                "model": "applied-equivalence:block/controller_offline"
+            },
+            "when": {
+                "online": false
+            }
+        },
+        {
+            "apply": {
+                "model": "applied-equivalence:block/controller_online"
+            },
+            "when": {
+                "online": true
+            }
+        }
+    ]
+}

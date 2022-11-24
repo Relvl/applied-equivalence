@@ -1,0 +1,18 @@
+{
+    "comment": "",
+    "mappings": [
+        {
+            "order": 1000,
+            "map": {
+                "c:iron_ingots": 100
+            }
+        },
+        {
+            "order": 10,
+            "map": {
+                "minecraft:obsidian": 1234,
+                "ae2:metal_ingots": 1000
+            }
+        }
+    ]
+}
