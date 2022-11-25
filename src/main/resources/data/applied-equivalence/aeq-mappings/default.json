@@ -1,0 +1,24 @@
+{
+    "comment": "",
+    "mappings": [
+        {
+            "order": 1000,
+            "tags": {
+                "c:iron_ingots": 100,
+                "c:gold_ingots": 200,
+                "c:copper_ingots": 200,
+                "c:cobblestone": 1
+            },
+            "items": {
+                "minecraft:obsidian": 1234
+            }
+        },
+        {
+            "order": 100,
+            "tags": {
+                "ae2:metal_ingots": 1000
+            },
+            "items": {}
+        }
+    ]
+}

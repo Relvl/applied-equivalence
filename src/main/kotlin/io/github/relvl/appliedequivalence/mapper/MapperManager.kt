@@ -41,6 +41,8 @@ object MapperManager : ServerLifecycleEvents.ServerStarting, ServerLifecycleEven
     override fun onServerStarting(server: MinecraftServer) {
         val prebuildValues = HashMap<ItemIdentity, ItemIdentity>()
 
+        val mappings = MappingFileReader.read(server.resourceManager)
+
         readedMappings.sortedBy { it.order }.forEach { mapping ->
             try {
                 if (mapping.name.startsWith("#")) {
