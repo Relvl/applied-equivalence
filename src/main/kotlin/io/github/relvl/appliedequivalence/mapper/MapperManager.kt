@@ -1,6 +1,8 @@
 package io.github.relvl.appliedequivalence.mapper
 
 import io.github.relvl.appliedequivalence.Logger
+import io.github.relvl.appliedequivalence.mapper.impl.MappingFileReader
+import io.github.relvl.appliedequivalence.mapper.impl.RecipeMapper
 import io.github.relvl.appliedequivalence.network.impl.PckInitializeClient
 import net.fabricmc.api.EnvType
 import net.fabricmc.api.Environment
@@ -19,14 +21,15 @@ object MapperManager : ServerLifecycleEvents.ServerStarting, ServerLifecycleEven
 
     override fun onServerStarting(server: MinecraftServer) {
         val time = System.currentTimeMillis()
-        val prebuildValues = HashMap<ItemIdentity, ItemIdentity>()
 
-        prebuildValues.putAll(MappingFileReader.read(server.resourceManager).associateBy { it })
+        MappingCollector.clear()
+        MappingCollector.setupFixedValues(MappingFileReader.read(server.resourceManager))
 
-        val recipeManager = server.recipeManager
+        RecipeMapper.process(server.recipeManager)
 
         values.clear()
-        values.putAll(prebuildValues)
+        values.putAll(MappingCollector.finalize())
+
         Logger.info("Loading AEq values took ${System.currentTimeMillis() - time} ms")
     }
 

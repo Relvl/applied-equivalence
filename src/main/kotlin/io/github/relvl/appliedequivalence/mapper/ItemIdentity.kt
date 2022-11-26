@@ -13,6 +13,8 @@ class ItemIdentity {
     val namespace: String
     val source: String
 
+    var order: Int = 0
+
     constructor(id: Int, tag: CompoundTag?, value: Long, source: String, ns: String) {
         this.item = Item.byId(id)
         this.tag = tag
@@ -37,7 +39,15 @@ class ItemIdentity {
         this.source = source
     }
 
-    override fun equals(other: Any?) = this === other || (other is ItemIdentity && item == other.item && Objects.equals(this.tag, other.tag))
+    val isTagEmpty get() = tag == null || tag.isEmpty
+
+    override fun equals(other: Any?): Boolean {
+        return this === other || (other is ItemIdentity && //
+                item == other.item && //
+                ((isTagEmpty && other.isTagEmpty) || Objects.equals(this.tag, other.tag)) //
+                )
+    }
+
     override fun hashCode(): Int {
         var result = item.hashCode()
         result = 31 * result + (tag?.hashCode() ?: 0)

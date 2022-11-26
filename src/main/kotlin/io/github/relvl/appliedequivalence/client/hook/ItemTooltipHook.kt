@@ -28,5 +28,12 @@ object ItemTooltipHook : ItemTooltipCallback {
                 lines.add(TranslatableComponent("AEq added as '%s' @ '%s'", it.namespace, it.source))
             }
         }
+
+        if (Screen.hasControlDown()) {
+            lines.add(TranslatableComponent("Item tags:"))
+            stack.tags.forEach { tagKey ->
+                lines.add(TranslatableComponent("   #%s:%s", tagKey.location.namespace, tagKey.location.path))
+            }
+        }
     }
 }

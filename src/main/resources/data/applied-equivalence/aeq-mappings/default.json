@@ -4,21 +4,50 @@
         {
             "order": 1000,
             "tags": {
+                "c:cobblestone": 1,
+                "minecraft:sand": 10,
+                "minecraft:logs": 25,
+                "minecraft:wool": 50,
                 "c:iron_ingots": 100,
+                "minecraft:coals": 200,
                 "c:gold_ingots": 200,
                 "c:copper_ingots": 200,
-                "c:cobblestone": 1
+                "c:quartz": 500,
+                "c:redstone_dusts": 400,
+                "c:glowstone_dusts": 500,
+                "c:certus_quartz": 600,
+                "c:fluix": 1600,
+                "c:diamonds": 1900
             },
             "items": {
-                "minecraft:obsidian": 1234
+                "minecraft:leather": 50,
+                "minecraft:vine": 50,
+                "minecraft:lily_pad": 50,
+                "minecraft:bone": 20,
+                "minecraft:sugar_cane": 50,
+                "minecraft:end_stone": 100,
+                "minecraft:blaze_rod": 400,
+                "minecraft:obsidian": 2000,
+                "ae2:sky_stone_block": 400,
+                "ae2:charged_certus_quartz_crystal": 2000,
+                "minecraft:slime_ball": 900,
+                "minecraft:ender_pearl": 1300,
+                "minecraft:gunpowder": 420,
+                "ae2:singularity": 307200,
+                "minecraft:nether_star": 304192
             }
         },
         {
-            "order": 0,
+            "order": -1000,
             "tags": {
-                "ae2:metal_ingots": 1234
-            },
-            "items": {}
+                "c:silicon": 600,
+                "ae2:calculation_processor_press": 1000,
+                "ae2:engineering_processor_press": 1000,
+                "ae2:logic_processor_press": 1000,
+                "ae2:silicon_press": 1000,
+                "ae2:name_press": 1000,
+                "c:dyes": 50
+            }
         }
     ]
 }
