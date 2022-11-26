@@ -14,9 +14,9 @@
             }
         },
         {
-            "order": 100,
+            "order": 0,
             "tags": {
-                "ae2:metal_ingots": 1000
+                "ae2:metal_ingots": 1234
             },
             "items": {}
         }

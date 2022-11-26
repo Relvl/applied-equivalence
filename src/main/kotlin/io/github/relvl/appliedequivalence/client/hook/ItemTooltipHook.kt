@@ -4,7 +4,6 @@ import io.github.relvl.appliedequivalence.mapper.MapperManager
 import net.fabricmc.api.EnvType
 import net.fabricmc.api.Environment
 import net.fabricmc.fabric.api.client.item.v1.ItemTooltipCallback
-import net.minecraft.ChatFormatting
 import net.minecraft.client.gui.screens.Screen
 import net.minecraft.network.chat.Component
 import net.minecraft.network.chat.TranslatableComponent
@@ -26,9 +25,8 @@ object ItemTooltipHook : ItemTooltipCallback {
             }
 
             if (Screen.hasShiftDown()) {
-                lines.add(TranslatableComponent("AEq added as %s", it.source))
+                lines.add(TranslatableComponent("AEq added as '%s' @ '%s'", it.namespace, it.source))
             }
-            ChatFormatting.YELLOW
         }
     }
 }

@@ -43,6 +43,7 @@ dependencies {
     modRuntimeOnly("me.shedaniel:RoughlyEnoughItems-fabric:8.3.571") { exclude(group = "net.fabricmc.fabric-api") }
     modRuntimeOnly("me.shedaniel.cloth:cloth-config-fabric:6.4.90") { exclude(group = "net.fabricmc.fabric-api") }
     modRuntimeOnly("mcp.mobius.waila:wthit:fabric-4.13.5") { exclude(group = "net.fabricmc.fabric-api") }
+    modRuntimeOnly("com.terraformersmc:modmenu:3.2.3") { exclude(group = "net.fabricmc.fabric-api") }
     compileOnly("mcp.mobius.waila:wthit-api:fabric-4.13.5") { exclude(group = "net.fabricmc.fabric-api") }
 }
 

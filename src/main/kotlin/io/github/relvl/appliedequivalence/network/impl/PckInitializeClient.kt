@@ -1,8 +1,11 @@
 package io.github.relvl.appliedequivalence.network.impl
 
+import io.github.relvl.appliedequivalence.mapper.ItemIdentity
 import io.github.relvl.appliedequivalence.mapper.MapperManager
 import io.github.relvl.appliedequivalence.network.AbstractPacket
 import io.netty.buffer.Unpooled
+import net.fabricmc.api.EnvType
+import net.fabricmc.api.Environment
 import net.minecraft.network.FriendlyByteBuf
 import net.minecraft.server.level.ServerPlayer
 import net.minecraft.world.item.Item
@@ -13,7 +16,7 @@ class PckInitializeClient : AbstractPacket {
     companion object {
         private const val pckLimit = 1024 * 1024
 
-        fun chunkAndSend(values: Collection<MapperManager.ItemIdentity>, player: ServerPlayer) {
+        fun chunkAndSend(values: Collection<ItemIdentity>, player: ServerPlayer) {
             var buff = FriendlyByteBuf(Unpooled.buffer())
             var count = 0
             var pckIndex = 0
@@ -34,6 +37,7 @@ class PckInitializeClient : AbstractPacket {
                 buff.writeNbt(info.tag)
                 buff.writeLong(info.value)
                 buff.writeUtf(info.source)
+                buff.writeUtf(info.namespace)
                 count++
             }
 
@@ -48,6 +52,7 @@ class PckInitializeClient : AbstractPacket {
         buff.writeBytes(b)
     }
 
+    @Environment(EnvType.CLIENT)
     constructor(buff: FriendlyByteBuf) : super(buff) {
         val protocol = buff.readInt()
         if (PROTOCOL != protocol) {
@@ -55,9 +60,17 @@ class PckInitializeClient : AbstractPacket {
         }
         val pckIndex = buff.readInt()
         val size = buff.readInt()
-        val values = HashSet<MapperManager.ItemIdentity>()
+        val values = HashSet<ItemIdentity>()
         for (i in 0 until size) {
-            values.add(MapperManager.ItemIdentity(buff.readVarInt(), buff.readNbt(), buff.readLong(), buff.readUtf()))
+            values.add(
+                ItemIdentity(
+                    buff.readVarInt(),
+                    buff.readNbt(),
+                    buff.readLong(),
+                    buff.readUtf(),
+                    buff.readUtf()
+                )
+            )
         }
         MapperManager.onClientReveivedValues(values, pckIndex)
     }
